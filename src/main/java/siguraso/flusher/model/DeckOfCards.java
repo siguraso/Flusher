@@ -12,7 +12,7 @@ public class DeckOfCards {
   ArrayList<String> cards = new ArrayList<>();
 
   public DeckOfCards() {
-    IntStream.range(1, 53).boxed().forEach(i -> {
+    IntStream.range(1, 14).boxed().forEach(i -> {
       for (char suit : suits) {
         cards.add(String.valueOf(suit) + i);
       }

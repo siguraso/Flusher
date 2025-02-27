@@ -1,0 +1,59 @@
+* {
+  -fx-font-family: 'Roboto', sans-serif;
+
+  bg_000: #ffffff;
+  bg_100: #666666;
+  bg_200: #333333;
+  bg_300: #000000;
+
+  text_wht: #ffffff;
+  text_blk: #000000;
+
+  card_wht: #ffffff;
+  card_blk: #000000;
+  card_red: #ff2727;
+}
+
+.card_red {
+  -fx-border-radius: 10;
+  -fx-background-radius: 15;
+  -fx-background-color: card_wht;
+  -fx-border-color: card_red;
+  -fx-border-width: 5px;
+}
+
+.card_blk {
+  -fx-border-radius: 10;
+  -fx-background-radius: 15;
+  -fx-background-color: card_wht;
+  -fx-border-color: card_blk;
+  -fx-border-width: 5px;
+}
+
+
+.card_label_red {
+  -fx-text-fill: card_red;
+  -fx-font-size: 25px;
+}
+
+.card_label_blk {
+  -fx-text-fill: text_blk;
+  -fx-font-size: 25px;
+}
+
+.card_view {
+  -fx-background-color: bg_200;
+  -fx-text-fill: text_wht;
+  -fx-border-radius: 10;
+  -fx-background-radius: 10;
+}
+
+.header {
+  -fx-text-fill: text_wht;
+  -fx-font-size: 30px;
+}
+
+.root {
+  -fx-background-color: bg_300;
+  -fx-text-fill: text_wht;
+}
