@@ -4,4 +4,6 @@ module siguraso.flusher.flusher {
 
   opens siguraso.flusher.flusher to javafx.graphics;
   exports siguraso.flusher.flusher;
+  exports siguraso.flusher;
+  opens siguraso.flusher to javafx.graphics;
 }

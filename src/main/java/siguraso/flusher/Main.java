@@ -1,4 +1,4 @@
-package siguraso.flusher.flusher;
+package siguraso.flusher;
 
 public class Main {
     public static void main(String[] args) {
