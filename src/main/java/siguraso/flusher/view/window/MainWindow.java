@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,10 +19,19 @@ public class MainWindow implements Window {
   private final DeckOfCards deckOfCards = new DeckOfCards();
   private final VBox dealCardRegion = new VBox();
   private final BorderPane root = new BorderPane();
+  private boolean freakyModeActive = false;
 
 
   public MainWindow(Stage primaryStage) {
     this.window = primaryStage;
+  }
+
+  private void toggleFreakyMode() {
+    freakyModeActive = !freakyModeActive;
+  }
+
+  private boolean isFreakyModeActive() {
+    return freakyModeActive;
   }
 
   @Override
@@ -70,14 +80,34 @@ public class MainWindow implements Window {
     dealCardRegion.setSpacing(20);
     dealCardRegion.setMinWidth(1000);
 
+    // these unicodde characters spell "freaky" in a fancy font
+    Button freakyModeButton = new Button(
+        "Toggle  \uD835\uDCEF\uD835\uDCFB\uD835\uDCEE\uD835\uDCEA\uD835\uDCF4\uD835\uDD02  mode");
+    freakyModeButton.setOnAction(actionEvent -> {
+      toggleFreakyMode();
+      if (isFreakyModeActive()) {
+        header.setText("Please flush me daddy 😩");
+        window.setTitle("freaky flusher. >:)");
+      } else {
+        header.setText("flusher.");
+        window.setTitle("flusher.");
+      }
+    });
+
     root.setRight(checkHandRegion.getComponent());
     root.setCenter(dealCardRegion);
     root.getStyleClass().add("main_window");
 
-    Scene scene = new Scene(root);
+    Pane allElements = new StackPane();
+    allElements.getChildren().add(root);
+    freakyModeButton.getStyleClass().add("freaky_mode_button");
+
+    allElements.getChildren().add(freakyModeButton);
+
+    Scene scene = new Scene(allElements);
     scene.getStylesheets().add("file:src/main/resources/style/Style.css");
 
-    window.setTitle("Flusher");
+    window.setTitle("flusher.");
     window.setScene(scene);
     window.setResizable(false);
     window.setWidth(1800);

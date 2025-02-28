@@ -72,6 +72,7 @@
 
 .button:hover {
   -fx-background-color: bg_100;
+  -fx-text-fill: text_wht;
 }
 
 .button:pressed {
@@ -92,4 +93,9 @@
   -fx-background-color: bg_200;
   -fx-text-fill: text_wht;
   -fx-background-radius: 20 0 0 20;
+}
+
+.freaky_mode_button {
+  -fx-background-color: transparent;
+  -fx-text-fill: transparent;
 }
