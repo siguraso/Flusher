@@ -8,6 +8,7 @@ public class DeckOfCards {
 
   // suits in unicode characters
   private final char[] suits = {'♥', '♦', '♣', '♠'};
+  private String[] currentHand;
 
   ArrayList<String> cards = new ArrayList<>();
 
@@ -23,18 +24,24 @@ public class DeckOfCards {
     return cards;
   }
 
-  public String[] dealHand(int cards) {
-    String[] hand = new String[cards];
+  public String[] dealHand(int cardsInHand) {
+    String[] hand = new String[cardsInHand];
     Random rand = new Random();
     // create a temporary list to remove cards from
-    ArrayList<String> tempCards = this.cards;
 
-    for (int i = 0; i < cards; i++) {
+    ArrayList<String> tempCards = new ArrayList<>(cards);
+
+    for (int i = 0; i < cardsInHand; i++) {
       int cardIndex = rand.nextInt(tempCards.size());
       hand[i] = tempCards.get(cardIndex);
       tempCards.remove(cardIndex);
     }
 
-    return hand;
+    currentHand = hand;
+    return currentHand;
+  }
+
+  public String[] getCurrentHand() {
+    return currentHand;
   }
 }

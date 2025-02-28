@@ -1,10 +1,12 @@
 * {
-  -fx-font-family: 'Roboto', sans-serif;
+  -fx-font-family: 'Roboto';
 
   bg_000: #ffffff;
   bg_100: #666666;
   bg_200: #333333;
   bg_300: #000000;
+
+  btn_pressed: #ff2727;
 
   text_wht: #ffffff;
   text_blk: #000000;
@@ -20,6 +22,10 @@
   -fx-background-color: card_wht;
   -fx-border-color: card_red;
   -fx-border-width: 5px;
+}
+
+.main_window {
+  -fx-background-color: bg_300;
 }
 
 .card_blk {
@@ -43,7 +49,6 @@
 
 .card_view {
   -fx-background-color: bg_200;
-  -fx-text-fill: text_wht;
   -fx-border-radius: 10;
   -fx-background-radius: 10;
 }
@@ -53,7 +58,38 @@
   -fx-font-size: 30px;
 }
 
-.root {
+.deal_card_region {
   -fx-background-color: bg_300;
   -fx-text-fill: text_wht;
+}
+
+.button {
+  -fx-background-color: bg_200;
+  -fx-text-fill: text_wht;
+  -fx-background-radius: 8;
+  -fx-font-size: 20px;
+}
+
+.button:hover {
+  -fx-background-color: bg_100;
+}
+
+.button:pressed {
+  -fx-background-color: btn_pressed;
+}
+
+.check_hand_label {
+  -fx-text-fill: text_wht;
+  -fx-font-size: 25px;
+}
+
+.check_hand_value {
+  -fx-text-fill: text_wht;
+  -fx-font-size: 30px;
+}
+
+.check_hand_region {
+  -fx-background-color: bg_200;
+  -fx-text-fill: text_wht;
+  -fx-background-radius: 20 0 0 20;
 }
