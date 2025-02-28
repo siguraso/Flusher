@@ -81,18 +81,7 @@ public class MainWindow implements Window {
     dealCardRegion.setMinWidth(1000);
 
     // these unicodde characters spell "freaky" in a fancy font
-    Button freakyModeButton = new Button(
-        "Toggle  \uD835\uDCEF\uD835\uDCFB\uD835\uDCEE\uD835\uDCEA\uD835\uDCF4\uD835\uDD02  mode");
-    freakyModeButton.setOnAction(actionEvent -> {
-      toggleFreakyMode();
-      if (isFreakyModeActive()) {
-        header.setText("Please flush me daddy 😩");
-        window.setTitle("freaky flusher. >:)");
-      } else {
-        header.setText("flusher.");
-        window.setTitle("flusher.");
-      }
-    });
+    Button freakyModeButton = getFreakyButton(header);
 
     root.setRight(checkHandRegion.getComponent());
     root.setCenter(dealCardRegion);
@@ -112,5 +101,23 @@ public class MainWindow implements Window {
     window.setResizable(false);
     window.setWidth(1800);
     window.setHeight(900);
+  }
+
+  private Button getFreakyButton(Label header) {
+    // this button stays hidden until the user hovers over it, where it appears.
+    Button freakyModeButton = new Button(
+        "Toggle  \uD835\uDCEF\uD835\uDCFB\uD835\uDCEE\uD835\uDCEA\uD835\uDCF4\uD835\uDD02  mode");
+    freakyModeButton.setOnAction(actionEvent -> {
+      toggleFreakyMode();
+      if (isFreakyModeActive()) {
+        // when freaky mode is active, change the header and the window title
+        header.setText("Please flush me daddy 😩");
+        window.setTitle("freaky flusher. >:)");
+      } else {
+        header.setText("flusher.");
+        window.setTitle("flusher.");
+      }
+    });
+    return freakyModeButton;
   }
 }

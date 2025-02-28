@@ -60,7 +60,8 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>siguraso.flusher.flusher/siguraso.flusher.flusher.HelloApplication
+              <mainClass>
+                siguraso.flusher.Main
               </mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
