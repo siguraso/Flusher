@@ -30,6 +30,19 @@ public class CardView implements WindowComponent {
       cardLabel.getStyleClass().add("card_label_blk");
     }
 
+    char suit = cardString.charAt(0);
+    String number = cardString.substring(1);
+
+    number = switch (number) {
+      case "11" -> "J";
+      case "12" -> "Q";
+      case "13" -> "K";
+      case "1" -> "A";
+      default -> number;
+    };
+
+    cardLabel.setText(number + "\n" + suit);
+    cardLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
     card.getChildren().add(cardLabel);
 
     card.setAlignment(javafx.geometry.Pos.CENTER);

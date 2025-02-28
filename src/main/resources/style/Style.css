@@ -39,12 +39,12 @@
 
 .card_label_red {
   -fx-text-fill: card_red;
-  -fx-font-size: 25px;
+  -fx-font-size: 50px;
 }
 
 .card_label_blk {
   -fx-text-fill: text_blk;
-  -fx-font-size: 25px;
+  -fx-font-size: 50px;
 }
 
 .card_view {
