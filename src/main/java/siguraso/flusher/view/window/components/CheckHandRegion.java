@@ -2,8 +2,6 @@ package siguraso.flusher.view.window.components;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import siguraso.flusher.model.HandChecker;
 
@@ -41,7 +39,7 @@ public class CheckHandRegion implements WindowComponent {
     queenOfSpadesBox.setAlignment(javafx.geometry.Pos.CENTER);
     queenOfSpadesBox.getChildren().addAll(hasQueenOfSpades, queenOfSpades);
 
-    Label checkFiveFlush = new Label("Has five flush: ");
+    Label checkFiveFlush = new Label("Has flush: ");
     checkFiveFlush.getStyleClass().add("check_hand_label");
     Label fiveFlush = new Label("-");
     fiveFlush.getStyleClass().add("check_hand_value");
@@ -86,7 +84,7 @@ public class CheckHandRegion implements WindowComponent {
 
     // update five flush
 
-    boolean hasFiveFlush = handChecker.checkFiveFlush(hand);
+    boolean hasFiveFlush = handChecker.checkFlush(hand);
     Label fiveFlush = (Label) fiveFlushBox.getChildren().get(1);
     fiveFlush.setText(hasFiveFlush ? "Yes" : "No");
   }

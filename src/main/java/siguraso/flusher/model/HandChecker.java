@@ -5,25 +5,18 @@ public class HandChecker {
   public HandChecker() {
   }
 
-  public boolean checkFiveFlush(String[] hand) {
+  public boolean checkFlush(String[] hand) {
     // create a deep, temporary copy of the hand
-    String[] tempCards = new String[5];
-    for (int i = 0; i < hand.length; i++) {
-      tempCards[i] = hand[i].substring(0, 1);
-    }
+    char suit = hand[0].charAt(0);
+    int sameSuitCount = 0;
 
-    int redCount = 0;
-    int blackCount = 0;
-
-    for (String card : tempCards) {
-      if (card.charAt(0) == '♥' || card.charAt(0) == '♦') {
-        redCount++;
-      } else {
-        blackCount++;
+    for (String card : hand) {
+      if (card.charAt(0) == suit) {
+        sameSuitCount++;
       }
     }
 
-    return redCount == 5 || blackCount == 5;
+    return sameSuitCount == hand.length;
   }
 
   public int checkSum(String[] hand) {

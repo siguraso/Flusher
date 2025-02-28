@@ -15,10 +15,10 @@ class TestHandChecker {
   }
 
   @Test
-  void testCheckFiveFlush() {
+  void testCheckFlush() {
     try {
       String[] hand = {"♥2", "♥3", "♥4", "♥5", "♥6"};
-      assertTrue(handChecker.checkFiveFlush(hand));
+      assertTrue(handChecker.checkFlush(hand));
     } catch (Exception e) {
       fail("The test failed, as the class threw an exception");
     }

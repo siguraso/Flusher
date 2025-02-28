@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,8 +17,12 @@ public class MainWindow implements Window {
   private final Stage window;
   private final DeckOfCards deckOfCards = new DeckOfCards();
   private final VBox dealCardRegion = new VBox();
+  private final Label handsDealtLabel = new Label("Hands dealt: 0");
+  private int handsDealtCounter = 0;
   private final BorderPane root = new BorderPane();
   private boolean freakyModeActive = false;
+  private final Button newHandButton = new Button("New hand");
+  private final Button checkHandButton = new Button("Check hand");
 
 
   public MainWindow(Stage primaryStage) {
@@ -32,6 +35,12 @@ public class MainWindow implements Window {
 
   private boolean isFreakyModeActive() {
     return freakyModeActive;
+  }
+
+  private void updateHandsDealtCounter() {
+    handsDealtCounter++;
+    handsDealtLabel.setText("Hands dealt: " + handsDealtCounter);
+
   }
 
   @Override
@@ -48,33 +57,33 @@ public class MainWindow implements Window {
   public void init() {
     Label header = new Label("flusher.");
     header.getStyleClass().add("header");
+    handsDealtLabel.getStyleClass().add("hands_dealt_label");
     CardView cardView = new CardView();
     cardView.init();
 
-    Button newHand = new Button("Draw new hand");
-    newHand.setMinHeight(50);
-    newHand.setMinWidth(200);
-    newHand.setOnAction(actionEvent -> {
+    newHandButton.setMinHeight(50);
+    newHandButton.setMinWidth(200);
+    newHandButton.setOnAction(actionEvent -> {
       cardView.updateCards(deckOfCards.dealHand(5));
+      updateHandsDealtCounter();
     });
 
     CheckHandRegion checkHandRegion = new CheckHandRegion();
     checkHandRegion.init();
 
-    Button checkHand = new Button("Check hand");
-    checkHand.setMinHeight(50);
-    checkHand.setMinWidth(200);
-    checkHand.setOnAction(actionEvent -> {
-      checkHandRegion.updateRegion(deckOfCards.getCurrentHand());
-    });
+    checkHandButton.setMinHeight(50);
+    checkHandButton.setMinWidth(200);
+    checkHandButton.setOnAction(
+        actionEvent -> checkHandRegion.updateRegion(deckOfCards.getCurrentHand()));
 
     HBox buttonBox = new HBox();
-    buttonBox.getChildren().addAll(newHand, checkHand);
+    buttonBox.getChildren().addAll(newHandButton, checkHandButton);
     buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
     buttonBox.setSpacing(40);
 
     dealCardRegion.getChildren()
-        .addAll(header, cardView.getComponent(), buttonBox, checkHandRegion.getComponent());
+        .addAll(header, cardView.getComponent(), buttonBox,
+            handsDealtLabel);
     dealCardRegion.getStyleClass().add("deal_card_region");
     dealCardRegion.setAlignment(javafx.geometry.Pos.CENTER);
     dealCardRegion.setSpacing(20);
@@ -87,7 +96,7 @@ public class MainWindow implements Window {
     root.setCenter(dealCardRegion);
     root.getStyleClass().add("main_window");
 
-    Pane allElements = new StackPane();
+    StackPane allElements = new StackPane();
     allElements.getChildren().add(root);
     freakyModeButton.getStyleClass().add("freaky_mode_button");
 
@@ -111,11 +120,16 @@ public class MainWindow implements Window {
       toggleFreakyMode();
       if (isFreakyModeActive()) {
         // when freaky mode is active, change the header and the window title
-        header.setText("Please flush me daddy 😩");
+        header.setText(
+            "\uD835\uDCEF\uD835\uDCFB\uD835\uDCEE\uD835\uDCEA\uD835\uDCF4\uD835\uDD02  flusher. 😩");
         window.setTitle("freaky flusher. >:)");
+        newHandButton.setText("Flush me zaddy 😩");
+        checkHandButton.setText("Check on my hand daddy 😩");
       } else {
         header.setText("flusher.");
         window.setTitle("flusher.");
+        newHandButton.setText("New hand");
+        checkHandButton.setText("Check hand");
       }
     });
     return freakyModeButton;
